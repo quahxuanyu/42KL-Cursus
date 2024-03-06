@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 17:34:54 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/04 17:38:50 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/05 19:15:05 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int	is_sep(char c, char charset)
+static int is_sep(char c, char charset)
 {
-	return (c == charset);
+	return (c == charset || c == '\0');
 }
 
-int	get_size(const char *str, char sep)
+static int get_size(const char *str, char sep)
 {
-	int	i;
-	int	length;
+	int i;
+	int length;
 
 	i = -1;
 	length = 0;
@@ -34,9 +33,9 @@ int	get_size(const char *str, char sep)
 	return (length);
 }
 
-void	str_putword(char *dest, const char *src, char sep)
+static void str_putword(char *dest, const char *src, char sep)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	while (!is_sep(src[++i], sep))
@@ -44,11 +43,11 @@ void	str_putword(char *dest, const char *src, char sep)
 	dest[i] = '\0';
 }
 
-void	insert_words(char **arr, const char *str, char sep)
+static void insert_words(char **arr, const char *str, char sep)
 {
-	int	i;
-	int	j;
-	int	w_count;
+	int i;
+	int j;
+	int w_count;
 
 	i = 0;
 	w_count = 0;
@@ -61,7 +60,7 @@ void	insert_words(char **arr, const char *str, char sep)
 			j = 0;
 			while (!is_sep(str[i + j], sep))
 				j++;
-			arr[w_count] = (char *) malloc(j + 1);
+			arr[w_count] = (char *)malloc(j + 1);
 			str_putword(arr[w_count], str + i, sep);
 			i = i + j;
 			w_count++;
@@ -71,11 +70,11 @@ void	insert_words(char **arr, const char *str, char sep)
 
 char **ft_split(char const *s, char c)
 {
-	char	**arr;
-	int		total_size;
+	char **arr;
+	int total_size;
 
 	total_size = get_size(s, c);
-	arr = (char **) malloc(sizeof(char *) * (total_size + 1));
+	arr = (char **)malloc(sizeof(char *) * (total_size + 1));
 	insert_words(arr, s, c);
 	arr[total_size] = 0;
 	return (arr);
