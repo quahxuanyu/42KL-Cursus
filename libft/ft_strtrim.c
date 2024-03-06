@@ -6,12 +6,12 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 17:49:29 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/04 17:15:43 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/04 17:39:54 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 static int	is_set(char c, char const *set)
 {
 	while (*set)

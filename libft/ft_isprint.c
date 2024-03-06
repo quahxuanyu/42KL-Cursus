@@ -6,11 +6,11 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:10:39 by xquah             #+#    #+#             */
-/*   Updated: 2024/02/26 17:36:18 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/06 16:45:21 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int c)
 {
-	return ((unsigned char) c > 31 && (unsigned char) c < 127);
+	return (c > 31 && c < 127);
 }
