@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:52 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/13 15:28:05 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/13 15:53:40 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_strdup(const char *s1)
 	str[i] = '\0';
 	return (str);
 }
-
+//ISSUE IS HERE
 int	line_len(char *buffer)
 {
 	int	len;
