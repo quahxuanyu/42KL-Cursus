@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:46 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/13 15:28:58 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/18 03:10:55 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 3
+#define BUFFER_SIZE 3
 #endif
 
-char	*get_next_line(int fd)
+char *get_next_line(int fd)
 {
-	char		*buffer;
-	char		*line;
-	static char	*left_over;
+	char *buffer;
+	char *line;
+	static char *left_over;
 
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer || BUFFER_SIZE < 1)
@@ -34,9 +34,9 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-void	set_line(char *line, char *left_over)
+void set_line(char *line, char *left_over)
 {
-	char	*temp;
+	char *temp;
 
 	temp = left_over;
 	line = malloc((line_len(left_over) + 1) * sizeof(char));
@@ -48,17 +48,18 @@ void	set_line(char *line, char *left_over)
 	free(temp);
 }
 
-void	fill_buffer(int fd, char *buffer, char *left_over)
+void fill_buffer(int fd, char *buffer, char *left_over)
 {
-	int		bytes_read;
-	char	*temp;
+	int bytes_read;
+	char *temp;
 
 	bytes_read = 1;
 	while (bytes_read > 0 && !ft_strchr(buffer, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		buffer[BUFFER_SIZE] = '\0';
-		//write(1, buffer, 42);
+		write(1, buffer, 3);
+		write(1, "\n", 1);
 		temp = left_over;
 		left_over = ft_strjoin(left_over, buffer);
 		free(temp);
