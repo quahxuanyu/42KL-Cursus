@@ -6,14 +6,14 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:52 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/18 04:24:22 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/18 18:11:44 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-char	ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int	i;
 
@@ -32,29 +32,48 @@ size_t ft_strlen(const char *s)
 	return (i);
 }
 
-char *ft_strjoin(char const *s1, char const *s2)
+char *ft_strjoin(char const *s1, char const *s2, int bytes_read)
 {
 	char *str;
 	int s1_len;
-	int s2_len;
 	int i;
-
 	
 	if (!s1)
 		s1_len = 0;
 	else
 		s1_len = ft_strlen(s1);
+	ft_putstr("left over length: ");
+	ft_putstr(ft_itoa(s1_len));
+	ft_putstr("\n");
 	i = -1;
-	s2_len = BUFFER_SIZE;
-	str = (char *)malloc(s1_len + s2_len + 1);
+	str = malloc((s1_len + bytes_read + 1) * sizeof(char));
 	if (!str)
+	{
+		ft_putstr("Null malloc\n");
 		return (NULL);
-	while (s1[++i])
-		str[i] = s1[i];
-	i--;
-	while (s2[++i - s1_len])
-		str[i] = s1[i - s1_len];
-	str[s1_len + s2_len] = '\0';
+	}
+	if (s1_len != 0)
+	{
+		ft_putstr("first loop\n");
+		while (s1[++i])
+		{
+			str[i] = s1[i];
+		}
+		ft_putstr(str);
+		ft_putstr("\n");
+		i--;
+	}
+	ft_putstr("after first loop\n");
+	while (++i - s1_len < bytes_read)
+	{
+		write(1, &s2[i - s1_len], 1);
+		ft_putstr("\n");
+		str[i] = s2[i - s1_len];
+	}
+	str[s1_len + bytes_read] = '\0';
+	ft_putstr("Current leftover: ");
+	ft_putstr((char *) str);
+	ft_putstr("\n");
 	return (str);
 }
 
@@ -87,7 +106,7 @@ char *ft_strdup(const char *s1)
 	str[i] = '\0';
 	return (str);
 }
-// ISSUE IS HERE
+
 int line_len(char *buffer)
 {
 	int len;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:49 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/13 15:17:32 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/18 18:08:59 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@
 #endif
 char	*get_next_line(int fd);
 int		line_len(char *buffer);
-void	set_line(char *line, char *left_over);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *s, int c);
+char	*set_line(char **left_over);
+char 	*ft_strjoin(char const *s1, char const *s2, int bytes_read);
+char 	*ft_strchr(const char *s, int c);
 size_t	ft_strlen_c(const char *s, char c);
 char	*ft_strdup(const char *s1);
-void	fill_buffer(int fd, char *buffer, char *left_over);
+void	fill_buffer(int fd, char *buffer, char **left_over);
+void	ft_putstr(char *str);
+char	*ft_itoa(int n);
 #endif
