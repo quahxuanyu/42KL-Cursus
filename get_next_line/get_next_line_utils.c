@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:52 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/18 18:11:44 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/19 17:39:32 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	ft_putstr(char *str)
 
 	i = -1;
 	while (str[++i])
+	{
 		write(1, &str[i], 1);
+	}
 }
 
 size_t ft_strlen(const char *s)
@@ -43,7 +45,7 @@ char *ft_strjoin(char const *s1, char const *s2, int bytes_read)
 	else
 		s1_len = ft_strlen(s1);
 	ft_putstr("left over length: ");
-	ft_putstr(ft_itoa(s1_len));
+	//ft_putstr(ft_itoa(s1_len));
 	ft_putstr("\n");
 	i = -1;
 	str = malloc((s1_len + bytes_read + 1) * sizeof(char));
@@ -66,7 +68,7 @@ char *ft_strjoin(char const *s1, char const *s2, int bytes_read)
 	ft_putstr("after first loop\n");
 	while (++i - s1_len < bytes_read)
 	{
-		write(1, &s2[i - s1_len], 1);
+		//write(1, &s2[i - s1_len], 1);
 		ft_putstr("\n");
 		str[i] = s2[i - s1_len];
 	}
@@ -113,6 +115,7 @@ int line_len(char *buffer)
 
 	len = 0;
 
+	ft_putstr("Get Line length\n");
 	while (*buffer != '\n' && *buffer)
 	{
 		len++;
