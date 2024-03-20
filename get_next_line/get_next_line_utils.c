@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:52 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/19 17:39:32 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/20 13:42:48 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	ft_putstr(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		write(1, &str[i], 1);
+		//write(1, &str[i], 1);
+		//continue ;
 	}
 }
 
@@ -121,6 +122,8 @@ int line_len(char *buffer)
 		len++;
 		buffer++;
 	}
+	if (*buffer == '\n')
+		len++;
 	return (len);
 }
 /*

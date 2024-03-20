@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:49 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/19 17:39:02 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/20 10:30:22 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ size_t	ft_strlen_c(const char *s, char c);
 char	*ft_strdup(const char *s1);
 void	fill_buffer(int fd, char *buffer, char **left_over);
 void	ft_putstr(char *str);
-char	*ft_itoa(int n);
+//char	*ft_itoa(int n);
 #endif
