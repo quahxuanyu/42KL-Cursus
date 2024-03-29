@@ -6,85 +6,53 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:52 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/20 13:42:48 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/22 16:47:53 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
-void	ft_putstr(char *str)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
-
-	i = -1;
-	while (str[++i])
-	{
-		//write(1, &str[i], 1);
-		//continue ;
-	}
-}
-
-size_t ft_strlen(const char *s)
-{
-	size_t i;
+	size_t	i;
 
 	i = -1;
 	while (s[++i])
-		continue;
+		continue ;
 	return (i);
 }
 
-char *ft_strjoin(char const *s1, char const *s2, int bytes_read)
+char	*ft_strjoin(char const *s1, char const *s2, int bytes_read)
 {
-	char *str;
-	int s1_len;
-	int i;
-	
+	char	*str;
+	int		s1_len;
+	int		i;
+
 	if (!s1)
 		s1_len = 0;
 	else
 		s1_len = ft_strlen(s1);
-	ft_putstr("left over length: ");
-	//ft_putstr(ft_itoa(s1_len));
-	ft_putstr("\n");
 	i = -1;
 	str = malloc((s1_len + bytes_read + 1) * sizeof(char));
 	if (!str)
-	{
-		ft_putstr("Null malloc\n");
 		return (NULL);
-	}
 	if (s1_len != 0)
 	{
-		ft_putstr("first loop\n");
 		while (s1[++i])
-		{
 			str[i] = s1[i];
-		}
-		ft_putstr(str);
-		ft_putstr("\n");
 		i--;
 	}
-	ft_putstr("after first loop\n");
 	while (++i - s1_len < bytes_read)
-	{
-		//write(1, &s2[i - s1_len], 1);
-		ft_putstr("\n");
 		str[i] = s2[i - s1_len];
-	}
 	str[s1_len + bytes_read] = '\0';
-	ft_putstr("Current leftover: ");
-	ft_putstr((char *) str);
-	ft_putstr("\n");
 	return (str);
 }
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	char *temp;
-	int len;
-	int i;
+	char	*temp;
+	int		len;
+	int		i;
 
 	len = BUFFER_SIZE;
 	temp = (char *)s;
@@ -95,10 +63,10 @@ char *ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
-	int i;
-	char *str;
+	int		i;
+	char	*str;
 
 	str = (char *)malloc(ft_strlen((char *)s1) + 1);
 	if (!str)
@@ -110,13 +78,11 @@ char *ft_strdup(const char *s1)
 	return (str);
 }
 
-int line_len(char *buffer)
+int	line_len(char *buffer)
 {
-	int len;
+	int	len;
 
 	len = 0;
-
-	ft_putstr("Get Line length\n");
 	while (*buffer != '\n' && *buffer)
 	{
 		len++;
@@ -126,30 +92,3 @@ int line_len(char *buffer)
 		len++;
 	return (len);
 }
-/*
-int	total_lines(char *buffer)
-{
-	int	len;
-
-	len = 1;
-	if (*buffer == '\0')
-		return (0);
-	while (*buffer)
-		if (*buffer++ == '\n')
-			len++;
-	return (len);
-}
-
-int	copy_line(int line_count, char *buffer, char *dst)
-{
-	while (line_count > 0 && *buffer)
-		if (*buffer++ == '\n')
-			line_count--;
-	if (!*buffer)
-		return (1);
-	while (*buffer != '\n' && *buffer)
-		*dst++ = *buffer++;
-	*dst = *buffer;
-	return (0);
-}
-*/

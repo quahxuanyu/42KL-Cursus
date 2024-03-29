@@ -6,34 +6,29 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:46 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/21 19:32:04 by xquah            ###   ########.fr       */
+/*   Updated: 2024/03/29 20:44:54 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
 	char		*buffer;
 	char		*line;
-	static char	*left_over;
+	static char	*left_over[OPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-	{
-		left_over = NULL;
-		buffer = NULL;
 		return (NULL);
-	}
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	fill_buffer(fd, buffer, &left_over);
+	fill_buffer(fd, buffer, &left_over[fd]);
 	free(buffer);
-	buffer = NULL;
-	line = set_line(&left_over);
+	line = set_line(&left_over[fd]);
 	if (!line)
 	{
-		free(left_over);
+		free(left_over[fd]);
 		free(line);
 		return (NULL);
 	}
@@ -46,6 +41,8 @@ char	*copy_line(char *left_over)
 	int		i;
 
 	i = 0;
+	if (line_len(left_over) == 0 && !ft_strchr(left_over, '\n'))
+		return (NULL);
 	line = malloc((line_len(left_over) + 1) * sizeof(char));
 	if (!line)
 	{
@@ -60,8 +57,6 @@ char	*copy_line(char *left_over)
 	line[i] = (left_over)[i];
 	if ((left_over)[i] != '\0')
 		line[i + 1] = '\0';
-	if (line_len(left_over) == 0 && !ft_strchr(left_over, '\n'))
-		line = NULL;
 	return (line);
 }
 
@@ -96,10 +91,7 @@ void	fill_buffer(int fd, char *buffer, char **left_over)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
-		{
-			free(left_over);
 			return ;
-		}
 		else if (bytes_read == 0)
 			break ;
 		buffer[bytes_read] = '\0';
