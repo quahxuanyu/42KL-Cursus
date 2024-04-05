@@ -1,6 +1,6 @@
 FILES = ft_printf_func.c \
 		ft_printf.c \
-		ft_printf_p.c \
+		ft_printf_p_xX.c \
 		ft_printf_u.c
 
 NAME = libftprintf.a

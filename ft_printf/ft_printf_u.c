@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 16:46:46 by xquah             #+#    #+#             */
-/*   Updated: 2024/04/01 17:33:57 by xquah            ###   ########.fr       */
+/*   Updated: 2024/04/04 12:18:31 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_itoa_unsigned(unsigned int num)
 	int		i;
 
 	i = get_u_numlen(num);
-	str = ft_calloc(get_u_numlen(num) + 1, sizeof(char));
+	str = ft_calloc(i + 1, sizeof(char));
 	if (!str)
 		return (NULL);
 	while (--i >= 0)

@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:00:00 by xquah             #+#    #+#             */
-/*   Updated: 2024/04/01 17:32:45 by xquah            ###   ########.fr       */
+/*   Updated: 2024/04/04 13:47:36 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,19 @@ int	process_specifier(va_list arg, const char c)
 {
 	if (c == 'c')
 		return (ft_print_c((char) va_arg(arg, int)));
-	if (c == 's')
+	else if (c == 's')
 		return (ft_print_s(va_arg(arg, char *)));
-	if (c == 'p')
+	else if (c == 'p')
 		return (ft_print_p((uintptr_t) va_arg(arg, void *)));
-	if (c == 'd' || c == 'i')
+	else if (c == 'd' || c == 'i')
 		return (ft_print_d(va_arg(arg, int)));
-	if (c == 'u')
+	else if (c == 'u')
 		return (ft_print_u(va_arg(arg, unsigned int)));
+	else if (c == 'x' || c == 'X')
+		return (ft_print_x(va_arg(arg, unsigned int), c));
+	else if (c == '%')
+		return (write(1, "%", 1));
+	return (0);
 }
 
 int	ft_printf(const char *str, ...)
