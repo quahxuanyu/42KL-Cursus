@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 16:32:56 by xquah             #+#    #+#             */
-/*   Updated: 2024/05/27 17:22:00 by xquah            ###   ########.fr       */
+/*   Created: 2024/05/27 15:31:32 by xquah             #+#    #+#             */
+/*   Updated: 2024/05/27 16:37:12 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+#include "push_swap.h"
+
+void swap(t_list **lst)
 {
-	if (!lst || !new)
-		return ;
-	new->next = *lst;
-	*lst = new;
+
 }
