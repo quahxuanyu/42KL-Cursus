@@ -1,4 +1,12 @@
-FILES = operations.c \
+SRC_DIR = src
+
+SRC_FILES = push.c \
+		rotate.c \
+		sort.c \
+		swap.c \
+		utils.c
+
+FILES = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 NAME = push_swap.a
 
@@ -16,7 +24,7 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT)
 	cp $(LIBFT) $(NAME)
 	ar rcs $(NAME) $(OBJS)
-	cc main.c $(NAME) -o push_swap
+	cc src/main.c $(NAME) -o push_swap
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all

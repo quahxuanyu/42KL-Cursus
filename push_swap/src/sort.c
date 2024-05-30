@@ -1,23 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 15:05:09 by xquah             #+#    #+#             */
-/*   Updated: 2024/05/27 17:11:22 by xquah            ###   ########.fr       */
+/*   Created: 2024/05/30 15:14:31 by xquah             #+#    #+#             */
+/*   Updated: 2024/05/30 15:43:54 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "libft/libft.h"
-
-typedef struct s_stack
-{
-	int				data;
-	struct s_stack	*next;
-}	t_stack;
-
-#endif
