@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:31:32 by xquah             #+#    #+#             */
-/*   Updated: 2024/05/30 16:18:14 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/03 12:53:22 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	sb(t_stack **stack_b)
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
-	sa(stack_a);
-	sb(stack_b);
+	swap(*stack_a);
+	swap(*stack_b);
 	ft_printf("ss\n");
 }

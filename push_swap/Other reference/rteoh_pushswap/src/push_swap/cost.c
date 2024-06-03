@@ -1,0 +1,69 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cost.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rteoh <rteoh@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/22 21:39:32 by rteoh             #+#    #+#             */
+/*   Updated: 2024/03/22 21:39:32 by rteoh            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+static int	nb_conv(int	nb)
+{
+	if (nb < 0)
+		return (-(nb));
+	return (nb);
+}
+
+void	calculate_cost(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack *tmp_a;
+	t_stack *tmp_b;
+	int		size_a;
+	int		size_b;
+
+	tmp_a = *stack_a;
+	tmp_b = *stack_b;
+	size_a = get_stack_size(tmp_a);
+	size_b = get_stack_size(tmp_b);
+	while (tmp_b)
+	{
+		tmp_b->cost_b = tmp_b->pos;
+		if (tmp_b->pos > size_b / 2)
+			tmp_b->cost_b = (size_b - tmp_b->pos) * -1;
+		tmp_b->cost_a = tmp_b->target_pos;
+		if (tmp_b->target_pos > size_a / 2)
+			tmp_b->cost_a = (size_a - tmp_b->target_pos) * -1;
+		tmp_b = tmp_b->next;
+	}
+}
+
+void	do_optimal_move(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*tmp;
+	int	optimal;
+	int	cost_a;
+	int	cost_b;
+	int	nb_a;
+	int	nb_b;
+
+	tmp = *stack_b;
+	optimal = INT_MAX;
+	while (tmp)
+	{
+		nb_a = nb_conv(tmp->cost_a);
+		nb_b = nb_conv(tmp->cost_b);
+		if (nb_a + nb_b < optimal)
+		{
+			optimal = nb_a + nb_b;
+			cost_a = tmp->cost_a;
+			cost_b = tmp->cost_b;
+		}
+		tmp = tmp->next;
+	}
+	do_move(stack_a, stack_b, cost_a, cost_b);
+}

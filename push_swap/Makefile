@@ -4,6 +4,8 @@ SRC_FILES = push.c \
 		rotate.c \
 		sort.c \
 		swap.c \
+		utils.c \
+		reverse_rotate.c \
 		utils.c
 
 FILES = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
