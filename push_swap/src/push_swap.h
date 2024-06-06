@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:05:09 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/03 16:28:16 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/04 18:03:17 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,10 @@ void	rrr(t_stack **stk_a, t_stack **stk_b);
 //utils
 long	ft_long_atoi(const char *str);
 void	exit_error(t_stack **stk_a, t_stack **stk_b);
+
+//sort.c
+void	sort_index(t_stack **stk);
+
+//sort_three_algo.c
+void	sort_three(t_stack **stk_a);
 #endif
