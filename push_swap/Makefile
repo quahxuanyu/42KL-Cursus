@@ -9,6 +9,7 @@ SRC_FILES = push.c \
 		utils.c \
 		reverse_rotate.c \
 		cost_algo.c \
+		order_stack_a.c
 
 FILES = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

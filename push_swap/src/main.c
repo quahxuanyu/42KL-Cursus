@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:31:36 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 17:30:26 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/11 19:19:38 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,11 @@ int main(int argc, char *argv[])
 	stk_b = NULL;
 
 	sort_index(&stk_a);
-	print_stack(&stk_a);
-	ft_printf("\n");
-	print_s_index(&stk_a);
 	push_swap(&stk_a, &stk_b, argc - 1);
+	order_stack_a(&stk_a);
 
-	ft_printf("Stack A sorted status: %i\n", is_sorted(&stk_a));
+	//display_both_stack(&stk_a, &stk_b);
+	//ft_printf("Stack A sorted status: %i\n", is_sorted(&stk_a));
 }
 
 /*

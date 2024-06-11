@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:05:09 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 17:35:13 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/11 18:20:59 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,11 @@ void sort_three(t_stack **stk_a);
 
 // push_swap_algo.c
 void turk_sort(t_stack **stk_a, t_stack **stk_b);
+void position_nodes(t_stack **stk);
 
-//cost_algo.c
+// cost_algo.c
 void find_cost(t_stack **stk_a, t_stack **stk_b);
+
+//order_stack_a.c
+void order_stack_a(t_stack **stk_a);
 #endif

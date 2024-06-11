@@ -6,31 +6,23 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:41:25 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 17:31:20 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/11 18:54:32 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void position_nodes(t_stack **a, t_stack **b)
+void position_nodes(t_stack **stk)
 {
 	int i;
-	t_stack *temp_a;
-	t_stack *temp_b;
+	t_stack *temp;
 
 	i = 0;
-	temp_a = *a;
-	temp_b = *b;
-	while (temp_a)
+	temp = *stk;
+	while (temp)
 	{
-		temp_a->pos = i++;
-		temp_a = temp_a->next;
-	}
-	i = 0;
-	while (temp_b)
-	{
-		temp_b->pos = i++;
-		temp_b = temp_b->next;
+		temp->pos = i++;
+		temp = temp->next;
 	}
 }
 
@@ -76,17 +68,32 @@ void push_node(t_stack **stk_a, t_stack **stk_b)
 	t_stack *node_to_push;
 
 	node_to_push = find_cheapest(stk_b);
+	if (node_to_push->cost_a < 0 && node_to_push->cost_b < 0)
+		while (node_to_push->cost_a < 0 && node_to_push->cost_b < 0)
+		{
+			rrr(stk_a, stk_b);
+			node_to_push->cost_a++;
+			node_to_push->cost_b++;
+		}
+	else if (node_to_push->cost_a > 0 && node_to_push->cost_b > 0)
+		while (node_to_push->cost_a && node_to_push->cost_b)
+		{
+			rr(stk_a, stk_b);
+			node_to_push->cost_a--;
+			node_to_push->cost_b--;
+		}
+	//ft_printf("A to rotate: %i     B to rotate: %i\n", node_to_push->cost_a, node_to_push->cost_b);
 	if (node_to_push->cost_a < 0)
 		while (node_to_push->cost_a++ < 0)
 			rra(stk_a);
 	else
-		while (node_to_push->cost_a--)
+		while (node_to_push->cost_a-- > 0)
 			ra(stk_a);
 	if (node_to_push->cost_b < 0)
 		while (node_to_push->cost_b++ < 0)
 			rrb(stk_b);
 	else
-		while (node_to_push->cost_b--)
+		while (node_to_push->cost_b-- > 0)
 			rb(stk_b);
 	pa(stk_a, stk_b);
 }
@@ -101,23 +108,21 @@ void turk_sort(t_stack **stk_a, t_stack **stk_b)
 	{
 		pb(stk_a, stk_b);
 	}
-	position_nodes(stk_a, stk_b);
 	sort_three(stk_a);
 	len_to_push = stack_size(stk_b);
 	while (len_to_push--)
 	{
-		ft_printf("Lenght of Stack B: %i\n", len_to_push);
-		position_nodes(stk_a, stk_b);
+		// ft_printf("Lenght of Stack B: %i\n", len_to_push);
+		position_nodes(stk_a);
+		position_nodes(stk_b);
 		find_cost(stk_a, stk_b);
-		
-		print_stack(stk_a);
-		ft_printf("\n");
-		print_s_index(stk_a);
-		
-		display_both_stack(stk_a, stk_b);
 		push_node(stk_a, stk_b);
+		// print_stack(stk_a);
+		// ft_printf("\n");
+		// print_s_index(stk_a);
+		// display_both_stack(stk_a, stk_b);
 	}
-	display_both_stack(stk_a, stk_b);
+	// display_both_stack(stk_a, stk_b);
 }
 
 // void print_positions(t_stack **stk)
