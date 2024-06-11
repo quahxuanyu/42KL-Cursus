@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:46:40 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/04 18:03:30 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/11 17:11:44 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,25 @@ void	sort_three(t_stack **stk_a)
 {
 	int	first;
 	int	second;
+	int third;
 
 	first = (*stk_a)->s_index;
 	second = (*stk_a)->next->s_index;
-	if (first == 1 && second == 0)
-		sa(stk_a);
-	else if (first == 2 && second == 1)
-	{
-		sa(stk_a);
-		rra(stk_a);
-	}
-	else if (first == 2 && second == 0)
-		ra(stk_a);
-	else if (first == 0 && second == 2)
+	third = (*stk_a)->next->next->s_index;
+	if (first < second && first < third)
 	{
 		sa(stk_a);
 		ra(stk_a);
 	}
-	else if (first == 1 && second == 3)
+	else if (first > second && second > third)
+	{
+		sa(stk_a);
 		rra(stk_a);
+	}
+	else if (first > second && first < third)
+		sa(stk_a);
+	else if (first < second && first > third)
+		rra(stk_a);
+	else
+		ra(stk_a);
 }

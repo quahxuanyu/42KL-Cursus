@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:31:36 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/04 18:31:15 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/11 17:30:26 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_stack *init_stack(int len, char *nums[])
 	while (++i < len)
 	{
 		number = ft_long_atoi(nums[i]);
-		if (number > 2147483647 || number < -2147483648)
+		if (number > 2147483647 || number < INT_MIN)
 			exit_error(&stk, NULL);
 		current->data = (int)number;
 		if (i + 1 < len)
@@ -39,21 +39,7 @@ t_stack *init_stack(int len, char *nums[])
 	return (stk);
 }
 
-int	is_sorted(t_stack **stk)
-{
-	t_stack	*temp;
-	
-	temp = *stk;
-	while (temp->next)
-	{
-		if (temp->data > temp->next->data)
-			return (0);
-		temp = temp->next;
-	}
-	return (1);
-}
-
-void	push_swap(t_stack **stk_a, t_stack **stk_b, int stack_size)
+void push_swap(t_stack **stk_a, t_stack **stk_b, int stack_size)
 {
 	if (is_sorted(stk_a))
 		exit(0);
@@ -61,40 +47,8 @@ void	push_swap(t_stack **stk_a, t_stack **stk_b, int stack_size)
 		sa(stk_a);
 	else if (stack_size == 3)
 		sort_three(stk_a);
-	
-}
-
-void print_stack(t_stack *stk)
-{
-	t_stack *current;
-
-	current = stk;
-	while (current != NULL)
-	{
-		ft_printf("%i ", current->data);
-		current = current->next;
-	}
-}
-
-// void print_s_index(t_stack *stk)
-// {
-// 	t_stack *current;
-
-// 	current = stk;
-// 	while (current != NULL)
-// 	{
-// 		ft_printf("%i ", current->s_index);
-// 		current = current->next;
-// 	}
-// }
-
-void display_stack(t_stack *stk_a, t_stack *stk_b)
-{
-	ft_printf("Stack A: ");
-	print_stack(stk_a);
-	ft_printf("\nStack B: ");
-	print_stack(stk_b);
-	ft_printf("\n");
+	else if (stack_size > 3)
+		turk_sort(stk_a, stk_b);
 }
 
 int main(int argc, char *argv[])
@@ -107,8 +61,11 @@ int main(int argc, char *argv[])
 	stk_b = NULL;
 
 	sort_index(&stk_a);
+	print_stack(&stk_a);
+	ft_printf("\n");
+	print_s_index(&stk_a);
 	push_swap(&stk_a, &stk_b, argc - 1);
-	
+
 	ft_printf("Stack A sorted status: %i\n", is_sorted(&stk_a));
 }
 

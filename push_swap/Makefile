@@ -2,12 +2,13 @@ SRC_DIR = src
 
 SRC_FILES = push.c \
 		rotate.c \
-		sort.c \
+		sort_three_algo.c \
+		sort_index.c \
+		push_swap_algo.c \
 		swap.c \
 		utils.c \
 		reverse_rotate.c \
-		utils.c \
-		sort_three_algo.c
+		cost_algo.c \
 
 FILES = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
