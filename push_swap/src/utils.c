@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:29:01 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 17:30:30 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/13 13:07:10 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,23 @@ int stack_size(t_stack **stk)
 	return (len);
 }
 
-void free_stack(t_stack stk)
+void free_stack(t_stack **stk)
 {
+	t_stack	*temp;
+	t_stack	*temp2;
+
+	temp = (*stk);
+	while (temp)
+	{
+		temp2 = temp;
+		temp = temp->next;
+		temp2->next = NULL;
+		free(temp2);
+	}
 }
 
-void exit_error(t_stack **stk_a, t_stack **stk_b)
+void	exit_error(void)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	exit(1);
 }

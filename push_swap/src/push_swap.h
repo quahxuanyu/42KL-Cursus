@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:05:09 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 18:20:59 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/13 15:03:51 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@ void rrr(t_stack **stk_a, t_stack **stk_b);
 
 // utils
 long ft_long_atoi(const char *str);
-void exit_error(t_stack **stk_a, t_stack **stk_b);
+void exit_error(void);
 void display_both_stack(t_stack **stk_a, t_stack **stk_b);
 void print_stack(t_stack **stk);
 int is_sorted(t_stack **stk);
 int stack_size(t_stack **stk);
 void print_s_index(t_stack **stk);
+void free_stack(t_stack **stk);
 
 // sort.c
 void sort_index(t_stack **stk);
@@ -71,4 +72,7 @@ void find_cost(t_stack **stk_a, t_stack **stk_b);
 
 //order_stack_a.c
 void order_stack_a(t_stack **stk_a);
+
+//validate_input.c
+int	validate_input(char *argv[], int **arr);
 #endif

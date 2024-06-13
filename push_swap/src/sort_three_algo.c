@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_three_algo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:46:40 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 17:11:44 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/13 12:46:25 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	sort_three(t_stack **stk_a)
 	first = (*stk_a)->s_index;
 	second = (*stk_a)->next->s_index;
 	third = (*stk_a)->next->next->s_index;
+	if (is_sorted(stk_a))
+		return ;
 	if (first < second && first < third)
 	{
 		sa(stk_a);

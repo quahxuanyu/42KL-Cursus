@@ -9,13 +9,17 @@ SRC_FILES = push.c \
 		utils.c \
 		reverse_rotate.c \
 		cost_algo.c \
-		order_stack_a.c
+		order_stack_a.c \
+		main.c \
+		validate_input.c
 
 FILES = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
-NAME = push_swap.a
+NAME = push_swap
 
 OBJS = $(FILES:.c=.o)
+
+FLAGS = -Wall -Wextra -Werror
 
 LIBFT_PATH = ./libft
 
@@ -24,12 +28,10 @@ LIBFT = $(LIBFT_PATH)/libft.a
 all: $(NAME)
 
 .c.o:
-	cc $(CFLAGS) -c $< -o $(<:.c=.o)
+	cc $(FLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): $(OBJS) $(LIBFT)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJS)
-	cc src/main.c $(NAME) -o push_swap
+	cc $(FLAGS) $(LIBFT) $(OBJS) -o $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all

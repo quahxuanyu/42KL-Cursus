@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_algo.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:41:25 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 18:54:32 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/13 12:54:05 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,10 @@ void push_node(t_stack **stk_a, t_stack **stk_b)
 void turk_sort(t_stack **stk_a, t_stack **stk_b)
 {
 	int len_to_push;
-	int current_biggest;
 
 	len_to_push = stack_size(stk_a) - 3;
 	while (len_to_push--)
-	{
 		pb(stk_a, stk_b);
-	}
 	sort_three(stk_a);
 	len_to_push = stack_size(stk_b);
 	while (len_to_push--)
