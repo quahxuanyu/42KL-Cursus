@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:46 by xquah             #+#    #+#             */
-/*   Updated: 2024/03/29 20:44:54 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/13 23:07:04 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,9 @@ char	*set_line(char **left_over)
 {
 	char	*line;
 	char	*temp;
-	int		i;
 
 	if (!*left_over)
 		return (NULL);
-	i = 0;
 	temp = *left_over;
 	line = copy_line(*left_over);
 	*left_over = ft_strdup(*left_over + line_len(*left_over));
@@ -96,7 +94,7 @@ void	fill_buffer(int fd, char *buffer, char **left_over)
 			break ;
 		buffer[bytes_read] = '\0';
 		temp = *left_over;
-		*left_over = ft_strjoin(temp, buffer, bytes_read);
+		*left_over = ft_strjoin_special(temp, buffer, bytes_read);
 		free(temp);
 		temp = NULL;
 		if (ft_strchr(buffer, '\n'))

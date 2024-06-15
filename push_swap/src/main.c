@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:31:36 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/13 15:13:23 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/15 15:17:51 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ int main(int argc, char *argv[])
 		push_swap(&stk_a, &stk_b, input_len);
 		order_stack_a(&stk_a);
 		free_stack(&stk_a);
+		while (--input_len)
+			free(clean_input[input_len]);
+		free(arr);
 	}
 	return (0);
 }

@@ -28,10 +28,10 @@ LIBFT = $(LIBFT_PATH)/libft.a
 all: $(NAME)
 
 .c.o:
-	cc $(FLAGS) -c $< -o $(<:.c=.o)
+	cc $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT)
-	cc $(FLAGS) $(LIBFT) $(OBJS) -o $(NAME)
+	cc $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
@@ -42,7 +42,7 @@ clean:
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
-	rm -f $(NAME) push_swap
+	rm -f $(NAME)
 
 re: fclean all
 
