@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:31:36 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/15 15:17:51 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/21 17:50:48 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,14 @@ static char	**arg_to_str(char **av)
 		container = ft_strjoin(container, " ");
 	}
 	str_arr = ft_split(container, ' ');
+	free(container);
 	return (str_arr);
 }
 
 void push_swap(t_stack **stk_a, t_stack **stk_b, int stack_size)
 {
 	if (is_sorted(stk_a))
-		exit(0);
+		return ;
 	else if (stack_size == 2)
 		sa(stk_a);
 	else if (stack_size == 3)
@@ -87,7 +88,6 @@ int main(int argc, char *argv[])
 		// i = -1;
 		//  while (clean_input[++i])
 		//  	ft_printf("%i: %s\n", i, clean_input[i]);
-		
 		input_len = validate_input(clean_input, &arr);
 		// ft_printf("validate input ok\n");
 		stk_a = init_stack(arr, input_len);
@@ -96,8 +96,9 @@ int main(int argc, char *argv[])
 		push_swap(&stk_a, &stk_b, input_len);
 		order_stack_a(&stk_a);
 		free_stack(&stk_a);
-		while (--input_len)
+		while (--input_len > -1)
 			free(clean_input[input_len]);
+		free(clean_input);
 		free(arr);
 	}
 	return (0);

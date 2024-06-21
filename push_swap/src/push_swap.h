@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:05:09 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/13 22:50:50 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/21 23:09:24 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,7 @@ void order_stack_a(t_stack **stk_a);
 
 //validate_input.c
 int	validate_input(char *argv[], int **arr);
+
+//pre_sort_b.c
+void	push_to_b(t_stack **stk_a, t_stack **stk_b);
 #endif

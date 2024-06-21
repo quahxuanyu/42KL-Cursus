@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:41:25 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/14 23:24:55 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/21 23:51:31 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,19 +109,19 @@ void turk_sort(t_stack **stk_a, t_stack **stk_b)
 	len_to_push = stack_size(stk_b);
 	while (len_to_push--)
 	{
-		// ft_printf("Lenght of Stack B: %i\n", len_to_push);
 		position_nodes(stk_a);
 		position_nodes(stk_b);
 		find_cost(stk_a, stk_b);
 		push_node(stk_a, stk_b);
-		// print_stack(stk_a);
-		// ft_printf("\n");
-		// print_s_index(stk_a);
-		// display_both_stack(stk_a, stk_b);
 	}
-	// display_both_stack(stk_a, stk_b);
 }
 
+// ft_printf("Lenght of Stack B: %i\n", len_to_push);
+// display_both_stack(stk_a, stk_b);
+// print_stack(stk_a);
+// ft_printf("\n");
+// print_s_index(stk_a);
+// display_both_stack(stk_a, stk_b);
 // void print_positions(t_stack **stk)
 // {
 // 	t_stack *current;

@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 21:02:00 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 18:25:27 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/21 23:13:12 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void find_cost(t_stack **stk_a, t_stack **stk_b)
 	while (b)
 	{
 		target = find_target(stk_a, b->s_index);
-		// ft_printf("Target of %i, is %i\n", b->data, target->data);
-		// ft_printf("s_index of %i, is %i\n", b->s_index, target->s_index);
 		if (target->pos > (stack_size(stk_a) / 2))
 			b->cost_a = (stack_size(stk_a) - target->pos) * -1;
 		else
@@ -73,3 +71,6 @@ void find_cost(t_stack **stk_a, t_stack **stk_b)
 		b = b->next;
 	}
 }
+
+// ft_printf("Target of %i, is %i\n", b->data, target->data);
+// ft_printf("s_index of %i, is %i\n", b->s_index, target->s_index);
