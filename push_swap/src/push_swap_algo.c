@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 15:41:25 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/21 23:51:31 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/22 01:05:15 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,10 @@ void turk_sort(t_stack **stk_a, t_stack **stk_b)
 {
 	int len_to_push;
 
-	len_to_push = stack_size(stk_a) - 3;
-	while (len_to_push--)
-		pb(stk_a, stk_b);
+	// len_to_push = stack_size(stk_a) - 3;
+	// while (len_to_push--)
+	// 	pb(stk_a, stk_b);
+	push_to_b(stk_a, stk_b);
 	sort_three(stk_a);
 	len_to_push = stack_size(stk_b);
 	while (len_to_push--)

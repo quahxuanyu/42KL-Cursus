@@ -11,7 +11,8 @@ SRC_FILES = push.c \
 		cost_algo.c \
 		order_stack_a.c \
 		main.c \
-		validate_input.c
+		validate_input.c \
+		pre_sort_b.c
 
 FILES = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
