@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 13:08:57 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/03 13:23:20 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/25 14:49:47 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	reverse_rotate(t_stack **stack)
 {
-	t_stack *second_last;
-	t_stack *last;
+	t_stack	*second_last;
+	t_stack	*last;
 
 	last = *stack;
 	while (last->next)

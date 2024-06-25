@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 15:49:31 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/13 22:20:07 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/25 14:50:00 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	rotate(t_stack **stack)
 {
-	t_stack *temp;
-	t_stack *current;
+	t_stack	*temp;
+	t_stack	*current;
 
 	current = *stack;
 	while (current->next)

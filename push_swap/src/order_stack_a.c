@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   order_stack_a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 17:49:28 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 18:20:44 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/25 13:42:01 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	order_stack_a(t_stack **stk_a)
 {
 	t_stack	*current;
-	int	times_to_rotate;
-	
+	int		times_to_rotate;
+
 	position_nodes(stk_a);
 	current = *stk_a;
 	while (current)

@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cost_algo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 21:02:00 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/21 23:13:12 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/25 13:40:02 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *find_smallest(t_stack **stk_a)
+t_stack	*find_smallest(t_stack **stk_a)
 {
-	t_stack *a;
-	t_stack *smallest;
+	t_stack	*a;
+	t_stack	*smallest;
 
 	a = *stk_a;
 	smallest = *stk_a;
@@ -28,10 +28,10 @@ t_stack *find_smallest(t_stack **stk_a)
 	return (smallest);
 }
 
-t_stack *find_target(t_stack **stk_a, int current_index)
+t_stack	*find_target(t_stack **stk_a, int current_index)
 {
-	t_stack *a;
-	t_stack *target;
+	t_stack	*a;
+	t_stack	*target;
 
 	a = *stk_a;
 	target = NULL;
@@ -51,10 +51,10 @@ t_stack *find_target(t_stack **stk_a, int current_index)
 	return (target);
 }
 
-void find_cost(t_stack **stk_a, t_stack **stk_b)
+void	find_cost(t_stack **stk_a, t_stack **stk_b)
 {
-	t_stack *b;
-	t_stack *target;
+	t_stack	*b;
+	t_stack	*target;
 
 	b = *stk_b;
 	while (b)
@@ -71,6 +71,3 @@ void find_cost(t_stack **stk_a, t_stack **stk_b)
 		b = b->next;
 	}
 }
-
-// ft_printf("Target of %i, is %i\n", b->data, target->data);
-// ft_printf("s_index of %i, is %i\n", b->s_index, target->s_index);

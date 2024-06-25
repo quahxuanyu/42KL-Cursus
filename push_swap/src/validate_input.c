@@ -6,15 +6,21 @@
 /*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 11:59:19 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/13 15:21:38 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/25 15:04:59 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	exit_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
+}
+
 int	count_words(char **argv)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (argv[count])
@@ -42,7 +48,7 @@ void	check_duplicate(int *arr, int len)
 	}
 }
 
-int	contains_characters(char *str)
+int	contains_char(char *str)
 {
 	int	i;
 
@@ -69,7 +75,7 @@ int	validate_input(char *argv[], int **arr)
 	while (argv[++i])
 	{
 		num = ft_long_atoi(argv[i]);
-		if (num > 2147483647 || num < -2147483648 || contains_characters(argv[i]))
+		if (num > 2147483647 || num < -2147483648 || contains_char(argv[i]))
 		{
 			free(*arr);
 			exit_error();

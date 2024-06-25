@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:29:01 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/15 15:11:45 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/25 15:06:39 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long ft_long_atoi(const char *str)
+long	ft_long_atoi(const char *str)
 {
-	int i;
-	long num;
-	int is_negative;
+	int		i;
+	long	num;
+	int		is_negative;
 
 	i = -1;
 	num = 0;
 	is_negative = 0;
-	while (*str == '\n' || *str == '\t' || *str == '\v' || *str == '\f' || *str == '\r' || *str == ' ')
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
 	if (*str == '-' || *str == '+')
 	{
@@ -35,67 +35,23 @@ long ft_long_atoi(const char *str)
 	return (num);
 }
 
-// TO BE REMOVED
-void print_stack(t_stack **stk)
+void	position_nodes(t_stack **stk)
 {
-	t_stack *current;
+	int		i;
+	t_stack	*temp;
 
-	current = *stk;
-	while (current != NULL)
+	i = 0;
+	temp = *stk;
+	while (temp)
 	{
-		ft_printf("%i ", current->data);
-		current = current->next;
+		temp->pos = i++;
+		temp = temp->next;
 	}
 }
 
-void print_costs(t_stack **stk)
+int	is_sorted(t_stack **stk)
 {
-	t_stack *current;
-
-	current = *stk;
-	ft_printf("\nStack cost_a: ");
-	while (current != NULL)
-	{
-		ft_printf("%i ", current->cost_a);
-		current = current->next;
-	}
-
-	current = *stk;
-	ft_printf("\nStack cost_b: ");
-	while (current != NULL)
-	{
-		ft_printf("%i ", current->cost_b);
-		current = current->next;
-	}
-}
-
-void display_both_stack(t_stack **stk_a, t_stack **stk_b)
-{
-	ft_printf("Stack A: ");
-	print_stack(stk_a);
-	ft_printf("\nStack B: ");
-	print_stack(stk_b);
-
-	ft_printf("\nCOST Bs: ");
-	print_costs(stk_b);
-	ft_printf("\n");
-}
-
-void print_s_index(t_stack **stk)
-{
-	t_stack *current;
-
-	current = *stk;
-	while (current != NULL)
-	{
-		ft_printf("%i ", current->s_index);
-		current = current->next;
-	}
-}
-
-int is_sorted(t_stack **stk)
-{
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = *stk;
 	while (temp->next)
@@ -107,10 +63,10 @@ int is_sorted(t_stack **stk)
 	return (1);
 }
 
-int stack_size(t_stack **stk)
+int	stack_size(t_stack **stk)
 {
-	int len;
-	t_stack *current;
+	int		len;
+	t_stack	*current;
 
 	len = 0;
 	current = *stk;
@@ -122,7 +78,7 @@ int stack_size(t_stack **stk)
 	return (len);
 }
 
-void free_stack(t_stack **stk)
+void	free_stack(t_stack **stk)
 {
 	t_stack	*temp;
 	t_stack	*temp2;
@@ -135,10 +91,4 @@ void free_stack(t_stack **stk)
 		temp2->next = NULL;
 		free(temp2);
 	}
-}
-
-void	exit_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
 }

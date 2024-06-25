@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 15:31:32 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/11 17:37:29 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/25 14:46:08 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	swap(t_stack **stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
