@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 15:49:31 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/26 17:06:01 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/26 22:30:30 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	rotate(t_stack **stack)
 	t_stack	*temp;
 	t_stack	*current;
 
+	if (!stack || !(*stack) || !((*stack)->next))
+		return;
 	current = *stack;
 	while (current->next)
 		current = current->next;
@@ -29,18 +31,15 @@ void	rotate(t_stack **stack)
 void	ra(t_stack **stk_a)
 {
 	rotate(stk_a);
-	ft_printf("ra\n");
 }
 
 void	rb(t_stack **stk_b)
 {
 	rotate(stk_b);
-	ft_printf("rb\n");
 }
 
 void	rr(t_stack **stk_a, t_stack **stk_b)
 {
 	rotate(stk_a);
 	rotate(stk_b);
-	ft_printf("rr\n");
 }

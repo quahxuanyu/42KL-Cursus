@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:06:52 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/13 23:01:39 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/26 22:19:16 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*get_next_line(int fd);
 int		ft_printf(const char *str, ...);
+int		ft_strcmp(char *s1, char *s2);
 
 typedef struct s_list
 {

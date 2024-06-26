@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:45:39 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/26 22:02:56 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/26 22:20:19 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void check_and_do_ins(t_stack **a, t_stack **b, char *ins)
 	else if (do_both(a, b, ins))
 		return;
 	else
-		error_exit();
+		exit_error();
 }
 
 void	checker(t_stack **a, t_stack **b)
@@ -110,7 +110,7 @@ void	checker(t_stack **a, t_stack **b)
 			check_and_do_ins(a, b, steps);
 	}
 	if (is_sorted(a) && !(*b))
-		wrtie(1, "OK\n", 3);
+		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
 }

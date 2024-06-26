@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 13:08:57 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/25 14:49:47 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/26 22:31:05 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	reverse_rotate(t_stack **stack)
 	t_stack	*second_last;
 	t_stack	*last;
 
+	if (!stack || !(*stack) || !((*stack)->next))
+		return;
 	last = *stack;
 	while (last->next)
 	{

@@ -16,12 +16,13 @@ SRC_FILES = push.c \
 		validate_input.c \
 		pre_sort_b.c
 
-BONUS_SRC = checker_bonus.c \
+BONUS_SRC = checker.c \
 			push.c \
 			reverse_rotate.c \
 			rotate.c \
 			swap.c \
-			validate_input.c
+			validate_input.c \
+			bonus_utils.c
 
 FILES = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 BONUS_FILES = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC))
@@ -46,11 +47,11 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT)
 	cc $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
-$(B_NAME):	$(LIBFT) $(B_OBJ)
-	cc $(FLAGS) $(B_OBJ) $(LIBFT) -o $(B_NAME)
-
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
+	
+$(B_NAME):	$(LIBFT) $(B_OBJS)
+	cc $(FLAGS) $(B_OBJS) $(LIBFT) -o $(B_NAME)
 
 bonus:		$(B_NAME)
 
@@ -60,7 +61,7 @@ clean:
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
-	rm -f $(NAME)
+	rm -f $(NAME) $(B_NAME)
 
 re: fclean all
 

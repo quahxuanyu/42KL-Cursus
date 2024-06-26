@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 15:31:32 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/26 22:26:17 by xquah            ###   ########.fr       */
+/*   Created: 2024/06/26 22:18:01 by xquah             #+#    #+#             */
+/*   Updated: 2024/06/26 22:18:08 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "bonus.h"
+#include "libft.h"
 
-void	swap(t_stack **stack)
+int ft_strcmp(char *s1, char *s2)
 {
-	t_stack	*temp;
+	int i;
 
-	if (*stack == NULL || (*stack)->next == NULL)
-		return ;
-	temp = *stack;
-	*stack = (*stack)->next;
-	temp->next = (*stack)->next;
-	(*stack)->next = temp;
-}
-
-void	sa(t_stack **stack_a)
-{
-	swap(stack_a);
-}
-
-void	sb(t_stack **stack_b)
-{
-	swap(stack_b);
-}
-
-void	ss(t_stack **stack_a, t_stack **stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+		{
+			break;
+		}
+		i++;
+	}
+	return (s1[i] - s2[i]);
 }
