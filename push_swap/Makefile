@@ -1,5 +1,7 @@
 SRC_DIR = src
 
+BONUS_DIR = bonus
+
 SRC_FILES = push.c \
 		rotate.c \
 		sort_three_algo.c \
@@ -14,11 +16,21 @@ SRC_FILES = push.c \
 		validate_input.c \
 		pre_sort_b.c
 
+BONUS_SRC = checker_bonus.c \
+			push.c \
+			reverse_rotate.c \
+			rotate.c \
+			swap.c \
+			validate_input.c
+
 FILES = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+BONUS_FILES = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC))
 
 NAME = push_swap
+B_NAME = checker
 
 OBJS = $(FILES:.c=.o)
+B_OBJS = $(BONUS_FILES:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -34,12 +46,17 @@ all: $(NAME)
 $(NAME): $(OBJS) $(LIBFT)
 	cc $(FLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
+$(B_NAME):	$(LIBFT) $(B_OBJ)
+	cc $(FLAGS) $(B_OBJ) $(LIBFT) -o $(B_NAME)
+
 $(LIBFT):
 	make -C $(LIBFT_PATH) all
 
+bonus:		$(B_NAME)
+
 clean:
 	make -C $(LIBFT_PATH) clean
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(B_OBJS)
 
 fclean: clean
 	make -C $(LIBFT_PATH) fclean
