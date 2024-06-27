@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 15:31:36 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/27 13:54:35 by xquah            ###   ########.fr       */
+/*   Created: 2024/06/27 14:01:16 by xquah             #+#    #+#             */
+/*   Updated: 2024/06/27 14:03:44 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "bonus.h"
 
 t_stack	*init_stack(int *nums, int len)
 {
@@ -37,7 +37,7 @@ t_stack	*init_stack(int *nums, int len)
 	return (stk);
 }
 
-static char	**arg_to_str(char **av)
+char	**arg_to_str(char **av)
 {
 	int		i;
 	char	**str_arr;
@@ -58,39 +58,4 @@ static char	**arg_to_str(char **av)
 	str_arr = ft_split(container, ' ');
 	free(container);
 	return (str_arr);
-}
-
-void	push_swap(t_stack **stk_a, t_stack **stk_b, int stack_size)
-{
-	if (is_sorted(stk_a))
-		return ;
-	else if (stack_size == 2)
-		sa(stk_a);
-	else if (stack_size == 3)
-		sort_three(stk_a);
-	else if (stack_size > 3)
-		turk_sort(stk_a, stk_b);
-}
-
-int	main(int argc, char *argv[])
-{
-	t_stack	*stk_a;
-	t_stack	*stk_b;
-	int		*arr;
-	int		input_len;
-	char	**clean_input;
-
-	if (argc >= 2)
-	{
-		clean_input = arg_to_str(argv);
-		input_len = validate_input(clean_input, &arr);
-		stk_a = init_stack(arr, input_len);
-		stk_b = NULL;
-		sort_index(&stk_a);
-		push_swap(&stk_a, &stk_b, input_len);
-		order_stack_a(&stk_a);
-		free_stack(&stk_a);
-		free(arr);
-	}
-	return (0);
 }

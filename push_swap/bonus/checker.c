@@ -1,66 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_bonus.c                                    :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:45:39 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/26 22:20:19 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/27 14:01:34 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-t_stack *init_stack(int *nums, int len)
-{
-	int i;
-	t_stack *stk;
-	t_stack *current;
-
-	i = -1;
-	stk = malloc(sizeof(t_stack));
-	if (!stk)
-		return (NULL);
-	current = stk;
-	while (++i < len)
-	{
-		current->data = nums[i];
-		if (i + 1 < len)
-		{
-			current->next = malloc(sizeof(t_stack));
-			current = current->next;
-		}
-		else
-			current->next = NULL;
-	}
-	return (stk);
-}
-
-static char **arg_to_str(char **av)
-{
-	int i;
-	char **str_arr;
-	char *container;
-
-	i = 1;
-	container = NULL;
-	while (av[i])
-	{
-		if (!av[i][0])
-		{
-			free(container);
-			exit_error();
-		}
-		container = ft_strjoin(container, av[i++]);
-		container = ft_strjoin(container, " ");
-	}
-	str_arr = ft_split(container, ' ');
-	free(container);
-	return (str_arr);
-}
-
-int do_both(t_stack **a, t_stack **b, char *ins)
+int	do_both(t_stack **a, t_stack **b, char *ins)
 {
 	if (ft_strcmp(ins, "rr\n") == 0)
 		rr(a, b);
@@ -73,7 +25,7 @@ int do_both(t_stack **a, t_stack **b, char *ins)
 	return (1);
 }
 
-static void check_and_do_ins(t_stack **a, t_stack **b, char *ins)
+static void	check_and_do_ins(t_stack **a, t_stack **b, char *ins)
 {
 	if (ft_strcmp(ins, "sa\n") == 0)
 		sa(a);
@@ -92,7 +44,7 @@ static void check_and_do_ins(t_stack **a, t_stack **b, char *ins)
 	else if (ft_strcmp(ins, "rrb\n") == 0)
 		rrb(b);
 	else if (do_both(a, b, ins))
-		return;
+		return ;
 	else
 		exit_error();
 }
@@ -100,7 +52,7 @@ static void check_and_do_ins(t_stack **a, t_stack **b, char *ins)
 void	checker(t_stack **a, t_stack **b)
 {
 	char	*steps;
-	
+
 	steps = malloc(sizeof(char));
 	while (steps)
 	{
@@ -117,25 +69,20 @@ void	checker(t_stack **a, t_stack **b)
 
 int	main(int argc, char *argv[])
 {
-	t_stack *stk_a;
-	t_stack *stk_b;
-	int *arr;
-	int input_len;
-	char **clean_input;
+	t_stack	*stk_a;
+	t_stack	*stk_b;
+	int		*arr;
+	int		input_len;
+	char	**clean_input;
 
-	if(argc >= 2)
+	if (argc >= 2)
 	{
 		clean_input = arg_to_str(argv);
 		input_len = validate_input(clean_input, &arr);
 		stk_a = init_stack(arr, input_len);
 		stk_b = NULL;
-
-//operations
 		checker(&stk_a, &stk_b);
 		free_stack(&stk_a);
-		while (--input_len > -1)
-			free(clean_input[input_len]);
-		free(clean_input);
 		free(arr);
 	}
 }

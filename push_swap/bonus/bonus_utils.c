@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:29:01 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/26 22:22:51 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/27 13:57:22 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ long	ft_long_atoi(const char *str)
 	if (is_negative)
 		num = num * -1;
 	return (num);
+}
+
+void	exit_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
 int	is_sorted(t_stack **stk)

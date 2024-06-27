@@ -6,24 +6,25 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 11:59:19 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/26 18:38:09 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/27 13:58:20 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus.h"
 
-void	exit_error(void)
+void	clear_clean_input(char *clean_input[], int input_len)
 {
-	write(2, "Error\n", 6);
-	exit(1);
+	while (--input_len > -1)
+		free(clean_input[input_len]);
+	free(clean_input);
 }
 
-int	count_words(char **argv)
+int	count_words(char **clean_input)
 {
 	int	count;
 
 	count = 0;
-	while (argv[count])
+	while (clean_input[count])
 		count++;
 	return (count);
 }
@@ -48,7 +49,7 @@ void	check_duplicate(int *arr, int len)
 	}
 }
 
-int	contains_char(char *str)
+int	has_chr(char *str)
 {
 	int	i;
 
@@ -65,23 +66,27 @@ int	contains_char(char *str)
 	return (0);
 }
 
-int	validate_input(char *argv[], int **arr)
+int	validate_input(char *clean_input[], int **arr)
 {
 	int		i;
+	int		input_len;
 	long	num;
 
 	i = -1;
-	*arr = malloc(sizeof(int) * count_words(argv));
-	while (argv[++i])
+	input_len = count_words(clean_input);
+	*arr = malloc(sizeof(int) * input_len);
+	while (clean_input[++i])
 	{
-		num = ft_long_atoi(argv[i]);
-		if (num > 2147483647 || num < -2147483648 || contains_char(argv[i]))
+		num = ft_long_atoi(clean_input[i]);
+		if (num > 2147483647 || num < -2147483648 || has_chr(clean_input[i]))
 		{
+			clear_clean_input(clean_input, input_len);
 			free(*arr);
 			exit_error();
 		}
-		(*arr)[i] = (int) num;
+		(*arr)[i] = (int)num;
 	}
-	check_duplicate(*arr, count_words(argv));
-	return (count_words(argv));
+	clear_clean_input(clean_input, input_len);
+	check_duplicate(*arr, input_len);
+	return (input_len);
 }

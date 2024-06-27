@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 15:49:31 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/26 22:31:08 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/27 13:55:11 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	rotate(t_stack **stack)
 	t_stack	*current;
 
 	if (!stack || !(*stack) || !((*stack)->next))
-		return;
+		return ;
 	current = *stack;
 	while (current->next)
 		current = current->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_three_algo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:46:40 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/25 14:46:04 by xquah            ###   ########.fr       */
+/*   Updated: 2024/06/27 13:54:53 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,10 @@ void	sort_three(t_stack **stk_a)
 		rra(stk_a);
 	else
 		ra(stk_a);
+}
+
+void	exit_error(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }

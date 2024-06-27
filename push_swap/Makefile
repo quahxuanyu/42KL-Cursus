@@ -22,7 +22,8 @@ BONUS_SRC = checker.c \
 			rotate.c \
 			swap.c \
 			validate_input.c \
-			bonus_utils.c
+			bonus_utils.c \
+			init_stack.c
 
 FILES = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 BONUS_FILES = $(addprefix $(BONUS_DIR)/, $(BONUS_SRC))
