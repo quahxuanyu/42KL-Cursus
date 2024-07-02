@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 14:09:46 by xquah             #+#    #+#             */
-/*   Updated: 2024/06/13 23:07:04 by xquah            ###   ########.fr       */
+/*   Updated: 2024/07/02 11:34:27 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*copy_line(char *left_over)
 	int		i;
 
 	i = 0;
-	if (line_len(left_over) == 0 && !ft_strchr(left_over, '\n'))
+	if (line_len(left_over) == 0 && !ft_strchr_gnl(left_over, '\n'))
 		return (NULL);
 	line = malloc((line_len(left_over) + 1) * sizeof(char));
 	if (!line)
@@ -69,7 +69,7 @@ char	*set_line(char **left_over)
 		return (NULL);
 	temp = *left_over;
 	line = copy_line(*left_over);
-	*left_over = ft_strdup(*left_over + line_len(*left_over));
+	*left_over = ft_strdup_gnl(*left_over + line_len(*left_over));
 	if (!**left_over)
 	{
 		free(*left_over);
@@ -97,7 +97,7 @@ void	fill_buffer(int fd, char *buffer, char **left_over)
 		*left_over = ft_strjoin_special(temp, buffer, bytes_read);
 		free(temp);
 		temp = NULL;
-		if (ft_strchr(buffer, '\n'))
+		if (ft_strchr_gnl(buffer, '\n'))
 			break ;
 	}
 }
