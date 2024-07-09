@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:22:57 by xquah             #+#    #+#             */
-/*   Updated: 2024/07/07 01:17:50 by xquah            ###   ########.fr       */
+/*   Updated: 2024/07/09 11:39:21 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
 
 void	ft_btoa(int sig, siginfo_t *info, void *context)
 {
@@ -22,11 +18,11 @@ void	ft_btoa(int sig, siginfo_t *info, void *context)
 	static unsigned char	chr;
 
 	(void)context;
-	chr |= (sig == 12);
+	chr |= (sig == SIGUSR2);
 	bits++;
 	if (bits == 8)
 	{
-		if (chr == '\0')
+		if (chr == 0)
 		{
 			kill(info->si_pid, SIGUSR2);
 			ft_printf("\n");
@@ -47,7 +43,7 @@ int	main(void)
 	sa.sa_sigaction = ft_btoa;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
-	printf("%d\n", getpid());
+	ft_printf("%d\n", getpid());
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
