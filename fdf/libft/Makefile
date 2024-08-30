@@ -47,7 +47,10 @@ FILES = ft_strlen.c \
 		ft_lstclear.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
-		ft_strcmp.c
+		ft_strcmp.c \
+		ft_atoi_base.c \
+		ft_isspace.c \
+		ft_strchr_i.c
 
 NAME = libft.a
 
