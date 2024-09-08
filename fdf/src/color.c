@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 19:17:05 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/01 01:40:50 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/08 15:11:15 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	calc_light(int start, int end, double percentage)
 
 int	calc_z_color(t_data *fdf, int height)
 {
-	int	percentage;
+	double	percentage;
 
 	percentage = calc_percentage(fdf->map->min_z, fdf->map->max_z, height);
 	if (percentage < 0.1)

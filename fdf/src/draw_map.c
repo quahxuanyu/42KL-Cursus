@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 22:26:58 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/08 13:43:54 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/08 15:21:43 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ t_point *trans_point(t_point *p, t_data *fdf)
 	p->x *= fdf->zoom;
 	p->y *= fdf->zoom;
 	p->z *= ((double)fdf->zoom / SF);
-	// if ((fdf->zoom / SF) > 0)
-	// 	p->z *= (fdf->zoom / SF);
+	if (((fdf->map->max_z - fdf->map->min_z) != 0) && (((fdf->map->width + fdf->map->height) / 2) / (fdf->map->max_z - fdf->map->min_z)) > 1)
+		p->z *= SF;
 	isometric(p);
 	p->x += fdf->shift_x;
 	p->y += fdf->shift_y;
@@ -78,7 +78,7 @@ t_point *trans_point(t_point *p, t_data *fdf)
 // 	p->y += fdf->shift_y;
 // 	return (p);
 // }
-
+#include <stdio.h>
 void draw_map(t_data *fdf)
 {
 	int x;
@@ -86,7 +86,7 @@ void draw_map(t_data *fdf)
 
 	x = 0;
 	// ft_printf("map size: %i ---- divide factor: %i --- ff factor: %i\n", ((fdf->map->width + fdf->map->height) / 2), (fdf->map->max_z - fdf->map->min_z), (((fdf->map->width + fdf->map->height) / 2) / (fdf->map->max_z - fdf->map->min_z)));
-	ft_printf("fdf->zoom: %i\n", fdf->zoom);
+	printf("zoom factor: %f\n", ((double)fdf->zoom / SF));
 	while (x < fdf->map->width)
 	{
 		y = 0;
