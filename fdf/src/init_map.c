@@ -6,28 +6,19 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 17:55:58 by xquah             #+#    #+#             */
-/*   Updated: 2024/08/30 13:50:18 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/05 15:14:42 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	arr_size(char **lst)
-{
-	int	i;
-
-	i = -1;
-	while (lst[++i])
-		continue ;
-	free_split(lst);
-	return (i);
-}
-
 void	get_map_size(t_map *map, int fd)
 {
-	char *line;
+	char	*line;
 
 	line = get_next_line(fd);
+	if (line == NULL)
+		exit_error();
 	map->width = arr_size(ft_split(line, ' '));
 	while (line)
 	{
@@ -41,35 +32,8 @@ void	get_map_size(t_map *map, int fd)
 	ft_printf("width: %i\nheight: %i\n", map->width, map->height);
 }
 
-void	malloc_map(t_map *map)
-{
-	int	i;
-
-	map->z_map = malloc(map->height * sizeof(int *));
-	map->colors = malloc(map->height * sizeof(int *));
-	i = -1;
-	while (++i < map->height)
-	{
-		map->z_map[i] = ft_calloc(map->width, sizeof(int));
-		map->colors[i] = ft_calloc(map->width, sizeof(int));
-	}
-}
-
-int convert_hex_color(char *color, t_map *map)
-{
-	//shifts all the until after comma to get the hex
-	while (ft_isdigit(*color) || *color == '-' || *color == '+' || *color == ',')
-		color++;
-	if (*color && *color == 'x')
-	{
-		map->is_color = 1;
-		color++;
-		return (ft_atoi_base(color, HEX_BASE));
-	}
-	return (WHITE);
-}
-
-void parse_map(t_map *map, int fd)
+// line 76: atoi will only do until comma, damn genius
+void	parse_map(t_map *map, int fd)
 {
 	int		i;
 	int		j;
@@ -86,7 +50,7 @@ void parse_map(t_map *map, int fd)
 		j = -1;
 		while (split[++j])
 		{
-			map->z_map[i][j] = ft_atoi(split[j]); // atoi will only do until comma, damn genius
+			map->z_map[i][j] = calc_z_value(ft_atoi(split[j]), map);
 			map->colors[i][j] = convert_hex_color(split[j], map);
 		}
 		free(line);
@@ -95,11 +59,11 @@ void parse_map(t_map *map, int fd)
 	ft_printf("parse_map() complete\n");
 }
 
-t_map *init_map(char *filename)
+t_map	*init_map(char *filename)
 {
 	int		fd;
 	t_map	*map;
-	
+
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		exit_error();
@@ -114,4 +78,3 @@ t_map *init_map(char *filename)
 	ft_printf("init_map() complete\n");
 	return (map);
 }
-

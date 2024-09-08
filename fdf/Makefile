@@ -4,9 +4,12 @@ OBJDIR = objs/
 SRC_FILES = main.c \
 			init_map.c \
 			helper.c \
-			line_algo.c \
+			draw_line.c \
 			draw_map.c \
-			init_data.c
+			init_data.c \
+			utils.c \
+			color.c \
+			free.c
 
 SRCS = $(addprefix $(SRCDIR), $(SRC_FILES))
 OBJS = $(addprefix $(OBJDIR), $(notdir $(SRCS:.c=.o)))
@@ -15,7 +18,7 @@ LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
 #FLAGS = -Wall -Wextra -Werror
-FLAGS =
+FLAGS = -Wall -Wextra -Werror
 
 FDF = fdf
 NAME = $(FDF)

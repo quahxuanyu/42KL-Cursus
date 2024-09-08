@@ -23,6 +23,10 @@
  */
 #define W_HEIGHT 1000
 
+#define Z_MIN -W_HEIGHT
+
+#define Z_MAX W_HEIGHT
+
 /** @def HEX_BASE
  *  @brief This macro defines an uppercase hexadecimal base
  */

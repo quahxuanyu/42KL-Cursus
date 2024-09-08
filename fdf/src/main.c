@@ -6,17 +6,52 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 12:11:40 by xquah             #+#    #+#             */
-/*   Updated: 2024/08/30 12:53:54 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/08 13:45:02 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void print_map(t_map *map)
+int	handle_keypress(int keycode, t_data *fdf)
+{
+	if (keycode == ESC_KEY)
+		close_window(fdf);
+	return (0);
+}
+
+int main(int argc, char *argv[])
+{
+	if (argc == 2)
+	{
+		void	*mlx;
+		t_data	*fdf;
+		t_img	img;
+		t_map	*map;
+		void	*mlx_win;
+
+		mlx = mlx_init();
+		mlx_win = mlx_new_window(mlx, W_WIDTH, W_HEIGHT, "Xuan's FDF");
+		img.img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
+		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+		map = init_map(argv[1]);
+		fdf = init_data(map, &img, mlx_win, mlx);
+		//print_map(fdf->map);
+		//fdf->zoom = ft_atoi(argv[2]);
+		draw_map(fdf);
+		mlx_hook(fdf->win, 2, (1L << 0), &handle_keypress, fdf);
+		mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+		mlx_hook(mlx_win, 17, 0, &close_window, fdf);
+		mlx_loop(mlx);
+		free_map_mem(map);
+	}
+	exit_error();
+}
+
+/*void print_map(t_map *map)
 {
 	int	i;
 	int	j;
-	
+
 	i = -1;
 	ft_printf("Z Map: witdth - %i   height - %i\n", map->width, map->height);
 	while (++i < map->height)
@@ -42,33 +77,7 @@ void print_map(t_map *map)
 		ft_printf("\n");
 	}
 }
-
-int main(int argc, char *argv[])
-{
-	if (argc == 2)
-	{
-		void	*mlx;
-		t_data	*fdf;
-		t_img	img;
-		t_map	*map;
-		void	*mlx_win;
-		int		zoom;
-
-		mlx = mlx_init();
-		mlx_win = mlx_new_window(mlx, W_WIDTH, W_HEIGHT, "Xuan's FDF");
-		img.img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
-		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, // returns the image address
-									&img.endian);
-		map = init_map(argv[1]);
-		fdf = init_data(map, &img);
-		//print_map(fdf->map);
-		draw_map(fdf);
-		mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-		mlx_loop(mlx);
-		free_map_mem(map);
-	}
-	exit_error();
-}
+*/
 
 // int x;
 // int y;
