@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:06:52 by xquah             #+#    #+#             */
-/*   Updated: 2024/08/29 21:33:53 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/09 18:07:56 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		ft_atoi_base(const char *str, const char *base);
 int		ft_isspace(int c);
 int		ft_strchr_i(const char *str, char c);
 
-	typedef struct s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
