@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 01:28:25 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/08 16:18:40 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/09 18:21:44 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	exit_error(int error)
 {
 	if (error == 1)
 		ft_printf("Error\n");
-	else if (error == 0)
-		ft_printf("Exit Program\n");
 	exit(error);
 }
 

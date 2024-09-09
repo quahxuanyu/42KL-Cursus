@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 17:55:58 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/09 17:24:49 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/09 18:20:03 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	get_map_size(t_map *map, int fd)
 	}
 	free(line);
 	close(fd);
-	ft_printf("get_map_size() complete\n");
-	ft_printf("width: %i\nheight: %i\n", map->width, map->height);
 }
 
 // line 76: atoi will only do until comma, damn genius
@@ -40,7 +38,6 @@ void	parse_map(t_map *map, int fd)
 	char	*line;
 	char	**split;
 
-	ft_printf("parse_map() start\n");
 	i = -1;
 	malloc_map(map);
 	while (++i < map->height)
@@ -58,7 +55,6 @@ void	parse_map(t_map *map, int fd)
 		free(line);
 		free_split(split);
 	}
-	ft_printf("parse_map() complete\n");
 }
 
 t_map	*init_map(char *filename)
@@ -72,11 +68,9 @@ t_map	*init_map(char *filename)
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		exit_error(EXIT_FAILURE);
-	ft_printf("init_map() starts\n");
 	get_map_size(map, fd);
 	fd = open(filename, O_RDONLY);
 	parse_map(map, fd);
 	close(fd);
-	ft_printf("init_map() complete\n");
 	return (map);
 }

@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 19:21:18 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/09 17:37:56 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/09 18:24:53 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	malloc_map(t_map *map)
 
 	map->z_map = malloc(map->height * sizeof(int *));
 	map->colors = malloc(map->height * sizeof(int *));
+	if (!map->z_map || !map->colors)
+		exit_error(EXIT_FAILURE);
 	i = -1;
 	while (++i < map->height)
 	{

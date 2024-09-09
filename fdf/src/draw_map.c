@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 22:26:58 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/09 17:43:10 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/09 18:23:38 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_point	*create_point(int x, int y, t_data *fdf)
 	t_point	*p;
 
 	p = malloc(sizeof(t_point));
+	if (!p)
+		exit_error(EXIT_FAILURE);
 	p->x = x;
 	p->y = y;
 	p->z = fdf->map->z_map[y][x];
