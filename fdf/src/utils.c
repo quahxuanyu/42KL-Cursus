@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 19:21:18 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/01 01:40:38 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/09 17:37:56 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	calc_z_value(int z, t_map *map)
 	return (z);
 }
 
-// shifts all the until after comma to get the hex
 int	convert_hex_color(char *color, t_map *map)
 {
 	while (ft_isdigit(*color) || *color == '-'

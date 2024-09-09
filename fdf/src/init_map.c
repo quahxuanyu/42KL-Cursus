@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 17:55:58 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/05 15:14:42 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/09 17:24:49 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	get_map_size(t_map *map, int fd)
 
 	line = get_next_line(fd);
 	if (line == NULL)
-		exit_error();
+		exit_error(1);
 	map->width = arr_size(ft_split(line, ' '));
 	while (line)
 	{
@@ -53,6 +53,8 @@ void	parse_map(t_map *map, int fd)
 			map->z_map[i][j] = calc_z_value(ft_atoi(split[j]), map);
 			map->colors[i][j] = convert_hex_color(split[j], map);
 		}
+		if (j > map->width || j < map->width)
+			exit_error(EXIT_FAILURE);
 		free(line);
 		free_split(split);
 	}
@@ -66,10 +68,10 @@ t_map	*init_map(char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		exit_error();
+		exit_error(EXIT_FAILURE);
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
-		exit_error();
+		exit_error(EXIT_FAILURE);
 	ft_printf("init_map() starts\n");
 	get_map_size(map, fd);
 	fd = open(filename, O_RDONLY);

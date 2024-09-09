@@ -6,15 +6,15 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 22:26:58 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/08 15:21:43 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/09 17:43:10 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point *create_point(int x, int y, t_data *fdf)
+t_point	*create_point(int x, int y, t_data *fdf)
 {
-	t_point *p;
+	t_point	*p;
 
 	p = malloc(sizeof(t_point));
 	p->x = x;
@@ -24,69 +24,41 @@ t_point *create_point(int x, int y, t_data *fdf)
 		p->color = fdf->map->colors[y][x];
 	else
 		p->color = calc_z_color(fdf, p->z);
-	//ft_printf("Create Point complete\n");
 	return (p);
 }
 
 void	isometric(t_point *p)
 {
-	int tmp_x;
-	int tmp_y;
+	int	tmp_x;
+	int	tmp_y;
 
 	tmp_x = p->x;
 	tmp_y = p->y;
 	p->x = (tmp_x - tmp_y) * cos(0.52359877559);
 	p->y = (tmp_x + tmp_y) * sin(0.52359877559) - p->z;
-	//ft_printf("Isometric\n");
 }
 
-// void	scale_z(t_point *p, t_data *fdf)
-// {
-// 	if ((fdf->map->max_z + tmp_y) * sin(0.52359877559) - p->z > )
-// 	{
-		
-// 	}
-	
-// }
-
-t_point *trans_point(t_point *p, t_data *fdf)
+t_point	*trans_point(t_point *p, t_data *fdf)
 {
 	p->x *= fdf->zoom;
 	p->y *= fdf->zoom;
 	p->z *= ((double)fdf->zoom / SF);
-	if (((fdf->map->max_z - fdf->map->min_z) != 0) && (((fdf->map->width + fdf->map->height) / 2) / (fdf->map->max_z - fdf->map->min_z)) > 1)
-		p->z *= SF;
+	if ((fdf->map->max_z - fdf->map->min_z) != 0)
+		if ((double)((fdf->map->width + fdf->map->height) / 2)
+			/ (double)(fdf->map->max_z - fdf->map->min_z) > 1)
+			p->z *= 5;
 	isometric(p);
 	p->x += fdf->shift_x;
 	p->y += fdf->shift_y;
 	return (p);
 }
-// t_point *trans_point(t_point *p, t_data *fdf)
-// {
-// 	float z_range = Z_MAX - Z_MIN;
-// 	float z_diff = fdf->map->max_z - fdf->map->min_z;
-//	
-// 	p->x *= fdf->zoom;
-// 	p->y *= fdf->zoom;
-// 	if (z_diff > 0)
-// 	{
-// 		p->z = (int)(p->z) * z_range / z_diff + Z_MIN;
-// 	}
-// 	//p->z *= (fdf->zoom / SF);
-// 	isometric(p);
-// 	p->x += fdf->shift_x;
-// 	p->y += fdf->shift_y;
-// 	return (p);
-// }
-#include <stdio.h>
-void draw_map(t_data *fdf)
+
+void	draw_map(t_data *fdf)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
-	// ft_printf("map size: %i ---- divide factor: %i --- ff factor: %i\n", ((fdf->map->width + fdf->map->height) / 2), (fdf->map->max_z - fdf->map->min_z), (((fdf->map->width + fdf->map->height) / 2) / (fdf->map->max_z - fdf->map->min_z)));
-	printf("zoom factor: %f\n", ((double)fdf->zoom / SF));
 	while (x < fdf->map->width)
 	{
 		y = 0;
@@ -102,5 +74,4 @@ void draw_map(t_data *fdf)
 		}
 		x++;
 	}
-	ft_printf("****COMPLETE DRAW MAP*****\n");
 }

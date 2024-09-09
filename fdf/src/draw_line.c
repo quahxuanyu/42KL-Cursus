@@ -6,7 +6,7 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 00:21:14 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/05 15:13:40 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/08 15:33:17 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	slope_less_than_one(t_img *img, t_point *current, t_point *end)
 	int		dx;
 	t_point	start;
 
-	//ft_printf("slope LESS than one start max_z: %i\n", end->z);
 	i = -1;
 	start = *current;
 	dy = end->y - current->y;
@@ -49,7 +48,6 @@ void	slope_more_than_one(t_img *img, t_point *current, t_point *end)
 	int		dx;
 	t_point	start;
 
-	//ft_printf("slope MORE than one start max_z: %i\n", end->z);
 	i = -1;
 	start = *current;
 	dy = end->y - current->y;
@@ -84,14 +82,12 @@ void	draw_line(t_img *img, t_point *p1, t_point *p2)
 
 	dy = p2->y - p1->y;
 	dx = p2->x - p1->x;
-	//ft_printf("Draw line start \n");
 	if (ft_abs(dy) > ft_abs(dx))
 		slope_more_than_one(img, p1, p2);
 	else
 		slope_less_than_one(img, p1, p2);
 	free(p1);
 	free(p2);
-	//ft_printf("Draw line complete\n");
 }
 
 /*

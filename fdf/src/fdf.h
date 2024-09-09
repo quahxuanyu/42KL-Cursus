@@ -6,19 +6,19 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 18:57:39 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/08 11:48:18 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/08 16:19:10 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
-#define FDF_H
+# define FDF_H
 
-#include "../libft/libft.h"
-#include "macros.h"
-#include <stdlib.h>
-#include <fcntl.h>
-#include <mlx.h>
-#include <math.h>
+# include "../libft/libft.h"
+# include "macros.h"
+# include <stdlib.h>
+# include <fcntl.h>
+# include <mlx.h>
+# include <math.h>
 
 typedef struct s_img
 {
@@ -61,7 +61,7 @@ typedef struct s_data
 
 // helper.c
 int		ft_abs(int x);
-void	exit_error(void);
+void	exit_error(int error);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void	free_split(char **split);
 void	free_map_mem(t_map *map);
@@ -73,13 +73,13 @@ void	draw_line(t_img *img, t_point *p1, t_point *p2);
 t_map	*init_map(char *filename);
 
 //init_data.c
-t_data *init_data(t_map *map, t_img *img, void *win, void *mlx);
+t_data	*init_data(t_map *map, t_img *img, void *win, void *mlx);
 
 // draw_map.c
-void draw_map(t_data *fdf);
+void	draw_map(t_data *fdf);
 
 //free.c
-int close_window(t_data *fdf);
+int		close_window(t_data *fdf);
 
 // utils.c
 int		convert_hex_color(char *color, t_map *map);
@@ -91,5 +91,4 @@ int		arr_size(char **lst);
 int		calculate_color(t_point *start, t_point *current, t_point *end);
 double	calc_percentage(int start, int end, int current);
 int		calc_z_color(t_data *fdf, int height);
-
 #endif

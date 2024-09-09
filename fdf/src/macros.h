@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kytan <kytan@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/16 20:13:05 by kytan             #+#    #+#             */
-/*   Updated: 2024/06/16 20:13:05 by kytan            ###   ########.fr       */
+/*   Created: 2024/09/08 15:39:18 by xquah             #+#    #+#             */
+/*   Updated: 2024/09/08 15:39:18 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//CODE CREDIT: Written by Kylie Tan
 
 #include "fdf.h"
 
+/*Code Credit: Kylie Tan*/
 /** @def W_WIDTH
  *  @brief This macro defines the width of the window display
  */
-#define W_WIDTH 1800
+#define W_WIDTH 1980
 
 /** @def W_HEIGHT
  *  @brief This macro defines the height of the window display
  */
-#define W_HEIGHT 1000
+#define W_HEIGHT 1080
 
 #define Z_MIN -W_HEIGHT
 

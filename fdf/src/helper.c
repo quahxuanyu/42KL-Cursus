@@ -6,38 +6,41 @@
 /*   By: xquah <xquah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 01:28:25 by xquah             #+#    #+#             */
-/*   Updated: 2024/09/03 20:16:05 by xquah            ###   ########.fr       */
+/*   Updated: 2024/09/08 16:18:40 by xquah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void my_mlx_pixel_put(t_img *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 {
-	char *dst;
-	
+	char	*dst;
+
 	if (x >= W_WIDTH || y >= W_HEIGHT || x < 0 || y < 0)
 		return ;
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
 
-int ft_abs(int x)
+int	ft_abs(int x)
 {
 	if (x < 0)
 		return (-x);
 	return (x);
 }
 
-void exit_error(void)
+void	exit_error(int error)
 {
-	ft_printf("Error\n");
-	exit(1);
+	if (error == 1)
+		ft_printf("Error\n");
+	else if (error == 0)
+		ft_printf("Exit Program\n");
+	exit(error);
 }
 
-void free_split(char **split)
+void	free_split(char **split)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (split[j])
@@ -45,12 +48,12 @@ void free_split(char **split)
 	free(split);
 }
 
-void free_map_mem(t_map *map)
+void	free_map_mem(t_map *map)
 {
-	int i;
+	int	i;
 
 	if (!map)
-		return;
+		return ;
 	if (map->z_map)
 	{
 		i = -1;
